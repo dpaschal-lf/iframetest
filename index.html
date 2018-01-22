@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title></title>
+
+</head>
+<body>
+<div id="display">no data</div>
+<input type="text" id="sourceVal">
+<button>Send Value</button>
+<iframe src="frame.html" id="iframe"></iframe>
+
+</body>
+	<script type="text/javascript" defer>
+
+function someFunction(){
+	receiveData('connected to iframe');
+	
+}
+function sendDataFromParent(){
+	document.getElementById('iframe').contentWindow.receiveData( document.getElementById('sourceVal').value);
+}
+function receiveData(data){
+	document.getElementById('display').innerText = data;
+}
+document.querySelector('button').addEventListener('click',sendDataFromParent);
+</script>
+</html>
